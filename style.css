@@ -33,6 +33,13 @@ nav li {
     display: inline;
 }
 
+nav ul li a.active{
+    color: white;
+    font-weight: bold;
+    border-bottom: 3px solid rgb(0, 60, 255);
+    padding-bottom: 5px;
+}
+
 nav h1, nav ul{
     width: 100%;
     display: flex;
@@ -41,6 +48,8 @@ nav h1, nav ul{
     margin: 20px 120px;
     /* border: 1px solid black; */
 }
+
+
 
 nav h1 {
     color: rgb(0, 60, 255);

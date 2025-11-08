@@ -26,4 +26,36 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
   })
+
+  const section = document.querySelectorAll("section[id], footer[id]");
+  const navLinks = document.querySelectorAll("nav a");
+
+  const observerOptions = {
+    root : null,
+    rootMargin: "0px",
+    threshold: 0.6
+  }
+
+  const observerCallback = (entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const currentSectionId = entry.target.getAttribute("id");
+
+            navLinks.forEach(link => {
+                link.classList.remove("active");
+            });
+
+            const activeLink = document.querySelector(`nav a[href="#${currentSectionId}"]`);
+            if (activeLink) {
+                activeLink.classList.add("active");
+            }
+        }
+    });
+  }
+
+  const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+  section.forEach(section => {
+    observer.observe(section);
+  })
 });
